@@ -1,10 +1,35 @@
 import { List } from "../list-interface";
-
+import { Node } from "../../Node/node";
 export class LinkedList<T> implements List<T>{
-    prepend(value: T): void {
-        throw new Error("Method not implemented.");
+
+    private head: Node<T> | null;
+    private tail: Node<T> | null;
+    private count: number;
+
+    constructor(){
+        this.head = null;
+        this.tail = null;
+        this.count = 0;
+    }
+    
+    public prepend(value: T): void {
+        const newNode = new Node(null, null, value);
+
+
+        if (this.head === null){
+            this.head = newNode;
+            this.tail = newNode;
+            return;
+        }
+
+        newNode.next = this.head;
+        this.head.prev = newNode;
+        this.head = newNode;
     }
     append(value: T): void {
+        throw new Error("Method not implemented.");
+    }
+    Insert(value: T, index: number): void {
         throw new Error("Method not implemented.");
     }
     delete(value: T): void {

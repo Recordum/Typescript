@@ -4,6 +4,7 @@ export interface List<T> {
     delete(value: T): void;
     deleteHead(): void;
     deleteTail(): void;
+    Insert(value: T, index: number): void;
     findIndex(value:T): number|null;
     toArray(): [];
     fromArray(array: T[]):void;
