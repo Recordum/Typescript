@@ -15,19 +15,26 @@ export class LinkedList<T> implements List<T>{
     public prepend(value: T): void {
         const newNode = new Node(value);
 
-        if (this.head === null){
-            this.head = newNode;
-            this.tail = newNode;
+        if (this.isInitialNode(newNode)){
             return;
         }
 
         newNode.next = this.head;
-        this.head.prev = newNode;
+        this.head!.prev = newNode;
+
         this.head = newNode;
     }
     public append(value: T): void {
-        const newNode = new Node(null, null, value);
+        const newNode = new Node(value);
 
+        if (this.isInitialNode(newNode)){
+            return;
+        }
+
+        newNode.prev = this.tail;
+        this.tail!.next = newNode;
+
+        this.tail = newNode;
     }
     Insert(value: T, index: number): void {
         throw new Error("Method not implemented.");
@@ -58,6 +65,15 @@ export class LinkedList<T> implements List<T>{
     }
     print(): void {
         throw new Error("Method not implemented.");
+    }
+
+    private isInitialNode(newNode:Node<T>): boolean{
+        if (this.head === null){
+            this.head = newNode;
+            this.tail = newNode;
+            return true
+        }
+        return false;
     }
  
 }
