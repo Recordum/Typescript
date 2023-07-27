@@ -13,8 +13,7 @@ export class LinkedList<T> implements List<T>{
     }
     
     public prepend(value: T): void {
-        const newNode = new Node(null, null, value);
-
+        const newNode = new Node(value);
 
         if (this.head === null){
             this.head = newNode;
@@ -26,8 +25,9 @@ export class LinkedList<T> implements List<T>{
         this.head.prev = newNode;
         this.head = newNode;
     }
-    append(value: T): void {
-        throw new Error("Method not implemented.");
+    public append(value: T): void {
+        const newNode = new Node(null, null, value);
+
     }
     Insert(value: T, index: number): void {
         throw new Error("Method not implemented.");

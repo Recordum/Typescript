@@ -4,9 +4,9 @@ export class Node <T>{
     public prev: Node<T> | null ;
     private value: T;
 
-    constructor(next: Node<T>|null, before: Node<T>|null, value: T){
-        this.next = next;
-        this.prev = before;
+    constructor(value: T){
+        this.next = null;
+        this.prev = null;
         this.value = value;
     }
 
