@@ -56,7 +56,18 @@ export class LinkedList<T> implements List<T>{
     }
 
     IndexOf(value: T): number | null {
-        throw new Error("Method not implemented.");
+        let node = this.head;
+        let currentIndex = 0;
+        while(true){
+            if (node === null){
+                throw new Error("Index of your value not found");
+            }
+            if (value === this.find(currentIndex)){
+                return currentIndex;
+            }
+            currentIndex += 1;
+            node = node.next;
+        }
     }
 
     delete(value: T): void {
