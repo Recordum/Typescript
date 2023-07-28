@@ -12,7 +12,6 @@ export class LinkedList<T> implements List<T>{
         this.count = 0;
     }
     
-   
     public prepend(value: T): void {
         const newNode = new Node(value);
         this.count++;
@@ -53,7 +52,7 @@ export class LinkedList<T> implements List<T>{
         throw new Error("Index Out of Bound");
     }
 
-    IndexOf(value: T): number | null {
+    public IndexOf(value: T): number | null {
         let node = this.head;
         let currentIndex = 0;
         while(node !== null){
@@ -66,15 +65,59 @@ export class LinkedList<T> implements List<T>{
         throw new Error("Index of your value not found");
     }
 
-    delete(value: T): void {
-        throw new Error("Method not implemented.");
+    public delete(value: T): void {
+        let node = this.head;
+        let currentIndex = 0;
+        while(node !== null){
+            if (value === node.getValue()){
+                this.nodeToDelete(node);
+                this.count -= 1;
+                return;
+            }
+            currentIndex += 1;
+            node = node.next;
+        }
+        throw new Error("Index of your value not found");
     }
 
-    pop(): void {
-        throw new Error("Method not implemented.");
+    private nodeToDelete(node: Node<T>): void{
+        if (node.prev === null){
+            this.unshift();
+            return;
+        }
+        if (node.next === null){
+            this.pop();
+            return;
+        }
+        node.prev.next = node.next;
+        node.next.prev = node.prev;
     }
-    unshift(): void {
-        throw new Error("Method not implemented.");
+
+    public pop(): void {
+        if (this.tail === null){
+            return;
+        }
+        if (this.tail === this.head){
+            this.head = null;
+            this.tail = null;
+            return;
+        }
+
+        this.tail.prev!.next = null;
+        this.tail = this.tail?.prev;
+    }
+    public unshift(): void {
+        if (this.head === null){
+            return;
+        }
+        if (this.tail === this.head){
+            this.head = null;
+            this.tail = null;
+            return;
+        }
+
+        this.head.next!.prev = null;
+        this.head = this.head?.prev;
     }
    
     Insert(value: T, index: number): void {
