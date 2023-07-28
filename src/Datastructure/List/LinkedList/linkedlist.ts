@@ -123,7 +123,37 @@ export class LinkedList<T> implements List<T>{
     }
    
     insert(value: T, index: number): void {
-        
+        if (index > this.size()){
+            throw new Error("Index Out of Bound"); 
+        }
+        if (index === 0){
+            this.prepend(value);
+            return;
+        }
+        if (index === this.size()){
+            this.append(value);
+            return
+        }
+
+        let node = this.head;
+        let currentIndex = 0;
+        const newNode:Node<T> = new Node(value);
+
+        while(node !== null){
+            if (index === currentIndex){
+                node.prev!.next = newNode;
+                newNode.prev = node.prev;
+
+                node.prev = newNode;
+                newNode.next = node;
+
+                this.count ++;
+                return;
+            }
+            currentIndex += 1;
+            node = node.next;
+        }
+        throw new Error("Index Out of Bound");
     }
     
     isEmpty(): boolean {
