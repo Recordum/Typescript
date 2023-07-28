@@ -43,31 +43,27 @@ export class LinkedList<T> implements List<T>{
         if (index > this.size() - 1){
             throw new Error("Index Out of Bound");
         }
-        while(true){
-            if (node === null){
-                throw new Error("Index Out of Bound");
-            }
+        while(node !== null){
             if (index === currentIndex){
                 return node.getValue();
             }
             currentIndex += 1;
             node = node.next;
         }
+        throw new Error("Index Out of Bound");
     }
 
     IndexOf(value: T): number | null {
         let node = this.head;
         let currentIndex = 0;
-        while(true){
-            if (node === null){
-                throw new Error("Index of your value not found");
-            }
+        while(node !== null){
             if (value === node.getValue()){
                 return currentIndex;
             }
             currentIndex += 1;
             node = node.next;
         }
+        throw new Error("Index of your value not found");
     }
 
     delete(value: T): void {
