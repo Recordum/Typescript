@@ -2,8 +2,8 @@ import { List } from "../list-interface";
 import { Node } from "../../Node/node";
 export class LinkedList<T> implements List<T>{
 
-    head: Node<T> | null;
-    tail: Node<T> | null;
+    private head: Node<T> | null;
+    private tail: Node<T> | null;
     private count: number;
 
     constructor(){
@@ -11,7 +11,7 @@ export class LinkedList<T> implements List<T>{
         this.tail = null;
         this.count = 0;
     }
-    
+   
     public prepend(value: T): void {
         const newNode = new Node(value);
         this.count++;
@@ -35,6 +35,16 @@ export class LinkedList<T> implements List<T>{
         this.tail!.next = newNode;
 
         this.tail = newNode;
+    }
+
+    pop(): void {
+        throw new Error("Method not implemented.");
+    }
+    unshift(): void {
+        throw new Error("Method not implemented.");
+    }
+    find(index: number): T {
+       
     }
     Insert(value: T, index: number): void {
         throw new Error("Method not implemented.");
