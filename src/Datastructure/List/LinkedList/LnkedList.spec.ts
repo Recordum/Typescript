@@ -132,4 +132,21 @@ describe("LinkedList", () => {
       expect(()=>linkedList.delete(2)).toThrow("Can not delete your value");
     })
   })
+
+  describe("IsEmpty", ()=> {
+    test("IsEmpty: LinkedList 에 Node 가 존재하지 않을때 true 반환", () => {
+      linkedList.append(0);
+      linkedList.pop();
+
+      expect(linkedList.size()).toBe(0);
+      expect(linkedList.isEmpty()).toBe(true);
+    })
+
+    test("IsEmpty: LinkedList 에 Node 가 존재하면 false 반환", ()=>{
+      linkedList.append(1);
+
+      expect(linkedList.size()).toBe(1);
+      expect(linkedList.isEmpty()).toBe(false);
+    })
+  })
 }); 
