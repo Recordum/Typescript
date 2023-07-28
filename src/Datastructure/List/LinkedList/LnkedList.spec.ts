@@ -158,7 +158,7 @@ describe("LinkedList", () => {
       linkedList.append(0);
       linkedList.append(1);
       linkedList.append(2);
-      linkedList.insert(1, 100);
+      linkedList.insert(100, 1);
 
       expect(linkedList.size()).toBe(4);
       expect(linkedList.find(0)).toBe(0);
@@ -171,7 +171,7 @@ describe("LinkedList", () => {
       linkedList.append(0);
       linkedList.append(1);
       linkedList.append(2);
-      linkedList.insert(0, 100);
+      linkedList.insert(100, 0);
 
       expect(linkedList.size()).toBe(4);
       expect(linkedList.find(0)).toBe(100);
@@ -184,13 +184,21 @@ describe("LinkedList", () => {
       linkedList.append(0);
       linkedList.append(1);
       linkedList.append(2);
-      linkedList.insert(3, 100);
+      linkedList.insert(100, 3);
 
       expect(linkedList.size()).toBe(4);
       expect(linkedList.find(0)).toBe(0);
       expect(linkedList.find(1)).toBe(1);
       expect(linkedList.find(2)).toBe(2);
       expect(linkedList.find(3)).toBe(100);
+    })
+
+    test("insert: 범위를 넘어선 index에 insert 시 Index Out of Bound Error 발생", ()=>{
+      linkedList.append(0);
+      linkedList.append(1);
+      linkedList.append(2);
+      
+      expect(()=>linkedList.insert(100, 100)).toThrow("Index Out of Bound");
     })
   })
 }); 
