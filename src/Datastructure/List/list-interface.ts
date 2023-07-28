@@ -5,8 +5,8 @@ export interface List<T> {
     pop(): void;
     unshift(): void;
     Insert(value: T, index: number): void;
-    IndexOf(value:T): number|null;
-    find(index: number): T;
+    IndexOf(value:T): number | null;
+    find(index: number): T | null;
     isEmpty(): boolean;
     size(): number;
 }

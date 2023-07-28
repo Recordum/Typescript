@@ -11,6 +11,7 @@ export class LinkedList<T> implements List<T>{
         this.tail = null;
         this.count = 0;
     }
+    
    
     public prepend(value: T): void {
         const newNode = new Node(value);
@@ -36,6 +37,31 @@ export class LinkedList<T> implements List<T>{
 
         this.tail = newNode;
     }
+    public find(index: number): T | null {
+        let node = this.head;
+        let currentIndex = 0;
+        if (index > this.size() - 1){
+            throw new Error("Index Out of Bound");
+        }
+        while(true){
+            if (node === null){
+                throw new Error("Index Out of Bound");
+            }
+            if (index === currentIndex){
+                return node.getValue();
+            }
+            currentIndex += 1;
+            node = node.next;
+        }
+    }
+
+    IndexOf(value: T): number | null {
+        throw new Error("Method not implemented.");
+    }
+
+    delete(value: T): void {
+        throw new Error("Method not implemented.");
+    }
 
     pop(): void {
         throw new Error("Method not implemented.");
@@ -43,39 +69,21 @@ export class LinkedList<T> implements List<T>{
     unshift(): void {
         throw new Error("Method not implemented.");
     }
-    find(index: number): T {
-       
-    }
+   
     Insert(value: T, index: number): void {
         throw new Error("Method not implemented.");
     }
-    delete(value: T): void {
-        throw new Error("Method not implemented.");
-    }
-    deleteHead(): void {
-        throw new Error("Method not implemented.");
-    }
-    deleteTail(): void {
-        throw new Error("Method not implemented.");
-    }
-    findIndex(value: T): number | null {
-        throw new Error("Method not implemented.");
-    }
-    toArray(): [] {
-        throw new Error("Method not implemented.");
-    }
-    fromArray(array: T[]): void {
-        throw new Error("Method not implemented.");
-    }
+    
     isEmpty(): boolean {
         throw new Error("Method not implemented.");
     }
+
+   
+
     public size(): number {
         return this.count;
     }
-    print(): void {
-        throw new Error("Method not implemented.");
-    }
+  
 
     private isInitialNode(newNode:Node<T>): boolean{
         if (this.head === null){
