@@ -2,8 +2,8 @@ import { List } from "../list-interface";
 import { Node } from "../../Node/node";
 export class LinkedList<T> implements List<T>{
 
-    private head: Node<T> | null;
-    private tail: Node<T> | null;
+    head: Node<T> | null;
+    tail: Node<T> | null;
     private count: number;
 
     constructor(){
@@ -14,7 +14,7 @@ export class LinkedList<T> implements List<T>{
     
     public prepend(value: T): void {
         const newNode = new Node(value);
-
+        this.count++;
         if (this.isInitialNode(newNode)){
             return;
         }
@@ -26,7 +26,7 @@ export class LinkedList<T> implements List<T>{
     }
     public append(value: T): void {
         const newNode = new Node(value);
-
+        this.count++;
         if (this.isInitialNode(newNode)){
             return;
         }
@@ -60,8 +60,8 @@ export class LinkedList<T> implements List<T>{
     isEmpty(): boolean {
         throw new Error("Method not implemented.");
     }
-    size(): number {
-        throw new Error("Method not implemented.");
+    public size(): number {
+        return this.count;
     }
     print(): void {
         throw new Error("Method not implemented.");
