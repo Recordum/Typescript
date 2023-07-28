@@ -119,7 +119,7 @@ export class LinkedList<T> implements List<T>{
         }
 
         this.head.next!.prev = null;
-        this.head = this.head?.prev;
+        this.head = this.head?.next;
     }
    
     Insert(value: T, index: number): void {
