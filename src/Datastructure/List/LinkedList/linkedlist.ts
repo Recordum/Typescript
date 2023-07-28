@@ -123,19 +123,19 @@ export class LinkedList<T> implements List<T>{
     }
    
     Insert(value: T, index: number): void {
-        throw new Error("Method not implemented.");
+        
     }
     
     isEmpty(): boolean {
-        throw new Error("Method not implemented.");
+        if (this.size() === 0){
+            return true;
+        }
+        return false;
     }
-
-   
 
     public size(): number {
         return this.count;
     }
-  
 
     private isInitialNode(newNode:Node<T>): boolean{
         if (this.head === null){
