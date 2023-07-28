@@ -51,9 +51,9 @@ describe("LinkedList", () => {
       linkedListString.append("Node2");
 
       expect(linkedListString.size()).toBe(3);
-      expect(linkedListString.IndexOf("Node0")).toBe(0);
-      expect(linkedListString.IndexOf("Node1")).toBe(1);
-      expect(linkedListString.IndexOf("Node2")).toBe(2);
+      expect(linkedListString.indexOf("Node0")).toBe(0);
+      expect(linkedListString.indexOf("Node1")).toBe(1);
+      expect(linkedListString.indexOf("Node2")).toBe(2);
     })
     test("indexOf: List 에 없는 value 일 경우 Index of your value not found Error 발생", () =>{
       linkedListString.append("Node0");
@@ -61,7 +61,7 @@ describe("LinkedList", () => {
       linkedListString.append("Node2");
 
       expect(linkedListString.size()).toBe(3);
-      expect(()=>linkedListString.IndexOf("Node3")).toThrow("Index of your value not found");
+      expect(()=>linkedListString.indexOf("Node3")).toThrow("Index of your value not found");
     })
   })
 
@@ -133,8 +133,8 @@ describe("LinkedList", () => {
     })
   })
 
-  describe("IsEmpty", ()=> {
-    test("IsEmpty: LinkedList 에 Node 가 존재하지 않을때 true 반환", () => {
+  describe("isEmpty Test", ()=> {
+    test("isEmpty: LinkedList 에 Node 가 존재하지 않을때 true 반환", () => {
       linkedList.append(0);
       linkedList.pop();
 
@@ -142,11 +142,55 @@ describe("LinkedList", () => {
       expect(linkedList.isEmpty()).toBe(true);
     })
 
-    test("IsEmpty: LinkedList 에 Node 가 존재하면 false 반환", ()=>{
+    test("isEmpty: LinkedList 에 Node 가 존재하면 false 반환", ()=>{
       linkedList.append(1);
 
       expect(linkedList.size()).toBe(1);
       expect(linkedList.isEmpty()).toBe(false);
+    })
+  })
+
+  /**
+   * 테스트 코드 먼저 작성해보기
+   */
+  describe("Insert Test", () =>{
+    test("insert: 특정 index 에 value 추가", ()=> {
+      linkedList.append(0);
+      linkedList.append(1);
+      linkedList.append(2);
+      linkedList.insert(1, 100);
+
+      expect(linkedList.size()).toBe(4);
+      expect(linkedList.find(0)).toBe(0);
+      expect(linkedList.find(1)).toBe(100);
+      expect(linkedList.find(2)).toBe(1);
+      expect(linkedList.find(3)).toBe(2);
+    })
+
+    test("insert: 맨앞(haed)에 insert 하기", () =>{
+      linkedList.append(0);
+      linkedList.append(1);
+      linkedList.append(2);
+      linkedList.insert(0, 100);
+
+      expect(linkedList.size()).toBe(4);
+      expect(linkedList.find(0)).toBe(100);
+      expect(linkedList.find(1)).toBe(0);
+      expect(linkedList.find(2)).toBe(1);
+      expect(linkedList.find(3)).toBe(2);
+    })
+
+    test("insert: 맨뒤(tail)에 insert 하기", () => {
+      linkedList.append(0);
+      linkedList.append(1);
+      linkedList.append(2);
+      linkedList.insert(3, 100);
+
+      expect(linkedList.size()).toBe(4);
+      expect(linkedList.find(0)).toBe(0);
+      expect(linkedList.find(1)).toBe(1);
+      expect(linkedList.find(2)).toBe(2);
+      expect(linkedList.find(3)).toBe(100);
     })
   })
 }); 

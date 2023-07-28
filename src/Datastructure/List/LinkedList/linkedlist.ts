@@ -52,7 +52,7 @@ export class LinkedList<T> implements List<T>{
         throw new Error("Index Out of Bound");
     }
 
-    public IndexOf(value: T): number | null {
+    public indexOf(value: T): number | null {
         let node = this.head;
         let currentIndex = 0;
         while(node !== null){
@@ -122,7 +122,7 @@ export class LinkedList<T> implements List<T>{
         this.head = this.head?.next;
     }
    
-    Insert(value: T, index: number): void {
+    insert(value: T, index: number): void {
         
     }
     
