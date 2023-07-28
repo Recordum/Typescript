@@ -105,4 +105,26 @@ describe("LinkedList", () => {
       expect(()=>linkedList.find(0)).toThrow("Index Out of Bound")
     })
   })
+
+  describe("delete Test", () => {
+    test("delete: 특정 value를 갖는 node 삭제", () => {
+      linkedList.append(0);
+      linkedList.append(1);
+      linkedList.append(2);
+      linkedList.append(3);
+
+      linkedList.delete(1);
+      linkedList.delete(2);
+
+      expect(linkedList.size()).toBe(2);
+      expect(linkedList.find(0)).toBe(0);
+      expect(linkedList.find(1)).toBe(3);
+    })
+
+    test("delete: List에 존재하지 않는 value를 삭제 시도시 Error 발생", ()=> {
+      linkedList.append(0);
+
+      expect(()=>linkedList.delete(2)).toThrow("Can not delete your value");
+    })
+  })
 }); 

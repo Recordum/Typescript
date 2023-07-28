@@ -77,7 +77,7 @@ export class LinkedList<T> implements List<T>{
             currentIndex += 1;
             node = node.next;
         }
-        throw new Error("Index of your value not found");
+        throw new Error("Can not delete your value");
     }
 
     private nodeToDelete(node: Node<T>): void{
