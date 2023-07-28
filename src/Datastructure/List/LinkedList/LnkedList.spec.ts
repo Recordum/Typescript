@@ -83,5 +83,26 @@ describe("LinkedList", () => {
     })
   })
   
- 
+  describe("unshift Test", () => {
+    test("unshift: List 앞에서부터 삭제", () => {
+      linkedList.append(0);
+      linkedList.append(1);
+      linkedList.append(2);
+      linkedList.prepend(3);
+
+      linkedList.unshift();
+
+      expect(linkedList.size()).toBe(3);
+      expect(linkedList.find(0)).toBe(0);
+      expect(linkedList.find(1)).toBe(1);
+    });
+    test("unshift: node가 하나있을때 linkedList head tail이 null값으로 초기화 될 것", () =>{
+      linkedList.append(0);
+      
+      linkedList.unshift();
+
+      expect(linkedList.size()).toBe(0);
+      expect(()=>linkedList.find(0)).toThrow("Index Out of Bound")
+    })
+  })
 }); 
