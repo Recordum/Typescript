@@ -97,6 +97,7 @@ export class LinkedList<T> implements List<T>{
         if (this.tail === null){
             return;
         }
+        this.count -= 1;
         if (this.tail === this.head){
             this.head = null;
             this.tail = null;
@@ -110,6 +111,7 @@ export class LinkedList<T> implements List<T>{
         if (this.head === null){
             return;
         }
+        this.count -= 1;
         if (this.tail === this.head){
             this.head = null;
             this.tail = null;

@@ -59,5 +59,29 @@ describe("LinkedList", () => {
       expect(()=>linkedListString.IndexOf("Node3")).toThrow("Index of your value not found");
     })
   })
+
+  describe("pop Test", () => {
+    test("pop: List 뒤에서부터 삭제", () => {
+      linkedList.append(0);
+      linkedList.append(1);
+      linkedList.append(2);
+      linkedList.prepend(3);
+
+      linkedList.pop();
+
+      expect(linkedList.size()).toBe(3);
+      expect(linkedList.find(0)).toBe(3);
+      expect(linkedList.find(1)).toBe(0);
+    });
+    test("pop: node가 하나있을때 linkedList head tail이 null값으로 초기화 될 것", () =>{
+      linkedList.append(0);
+      
+      linkedList.pop();
+
+      expect(linkedList.size()).toBe(0);
+      expect(()=>linkedList.find(0)).toThrow("Index Out of Bound")
+    })
+  })
   
+ 
 }); 
